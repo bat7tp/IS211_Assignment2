@@ -42,7 +42,7 @@ def main(url, id):
     logging.basicConfig(filename='errors.log', filemode='w', format='%(name)s -%(levelname)s %(message)s')
     print(f"Running main with URL = {url}...")
     #create instance where the program will exit if a negative id number or zero is entered
-    while int(id) >= 0:
+    while int(id) > 0:
         try:
             csvData = downloadData(url)
         except Exception:
