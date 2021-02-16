@@ -13,7 +13,7 @@ def downloadData(url):
         return data
 
 def processData(file_content):
-    #a = 'Hi my name
+    #create a dictionary and separate the id, name and date into strings.
     a_dictionary = {}
     for x in file_content.splitlines():
         a = x.split(",")
@@ -26,12 +26,12 @@ def processData(file_content):
         except ValueError:
             logging.error("Error processing line  # 27 for ID #" + iDstring)
             print("got a bad date value")
-            #?what about the names with NO bdays entered....catch?
 
     print(a_dictionary)
     return a_dictionary
 
 def displayPerson(id, personData):
+    #print out the associated id and information
     dictionary_value = personData.get(id)
     if dictionary_value == None :
         print("No user found with that id")
@@ -41,6 +41,7 @@ def displayPerson(id, personData):
 def main(url, id):
     logging.basicConfig(filename='errors.log', filemode='w', format='%(name)s -%(levelname)s %(message)s')
     print(f"Running main with URL = {url}...")
+    #create instance where the program will exit if a negative id number or zero is entered
     while int(id) >= 0:
         try:
             csvData = downloadData(url)
